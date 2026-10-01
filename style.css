@@ -955,3 +955,30 @@ footer a:hover { color: #c9a050; }
     .runes-intro h1 { font-size: 36px; letter-spacing: 4px; margin-bottom: 15px; }
     .runes-intro p { font-size: 16px; line-height: 1.8; }
 }
+
+/* ============================================================
+   ПУНКТ «ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ» В БОКОВОМ МЕНЮ
+   ============================================================ */
+
+.nav-row-legal {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(201,160,80,0.08);
+}
+
+.nav-row-legal a {
+    color: #6a5f50;
+    font-size: 13px;
+}
+
+.nav-row-legal a:active,
+.nav-row-legal a:hover {
+    color: #c9a050;
+    background: rgba(201,160,80,0.06);
+    border-left-color: #c9a050;
+}
+
+/* На планшете+ скрываем этот пункт из меню-строки (политика есть в футере) */
+@media (min-width: 768px) {
+    .nav-row-legal { display: none; }
+}

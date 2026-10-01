@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="9a16faae25fe3149">
+    <meta name="theme-color" content="#c9a050">
+    <meta name="description" content="Руны Старшего Футарка: значения 24 рун, рунический гороскоп, гадание и руническая магия.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Руны Старшего Футарка — значения 24 рун, гадание и гороскоп</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Оверлей — вне container, до всего -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            ᛝᚲᚷᛉᚠᚨᚱ
+            <span>Старший Футарк · 24 руны</span>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="nav">
+            <div class="nav-title">Меню</div>
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
+
+            <div class="nav-row nav-row-left">
+                <a href="index.html" class="active">Главная</a>
+                <a href="runes.html">Руны Футарха</a>
+                <a href="rune-horoscope.html">Рунический гороскоп</a>
+                <a href="rune-divination.html">Гадание на рунах</a>
+                <a href="rune-magic.html">Магия</a>
+                <a href="gods.html">Асы Боги Скандинавии</a>
+                <a href="about.html">О сайте</a>
+            </div>
+            <div class="nav-row nav-row-right">
+                <a href="feedback.html">📧 Обратная связь</a>
+                <a href="support.html" class="support-link">₽ Финансовая поддержка сайта</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== ЦИТАТА ДНЯ ===== -->
+    <section>
+        <div style="background: rgba(20,20,35,0.4); border: 1px solid rgba(201,160,80,0.08); border-radius: 20px; padding: 35px 20px 28px; text-align: center; position: relative; overflow: hidden; margin-bottom: 30px;">
+            <div style="position: absolute; top: -50px; right: -50px; font-size: 120px; color: rgba(201,160,80,0.03); pointer-events: none; font-family: serif;">ᛉ</div>
+            <div style="position: absolute; bottom: -30px; left: -30px; font-size: 80px; color: rgba(201,160,80,0.03); pointer-events: none; font-family: serif;">ᚨ</div>
+
+            <div style="color: #6a5f50; font-size: 11px; letter-spacing: 4px; margin-bottom: 12px; text-transform: uppercase;">✦ Мудрость предков ✦</div>
+            <div style="font-size: 28px; color: rgba(201,160,80,0.15); letter-spacing: 10px; margin-bottom: 12px;">ᛝᚲᚷᛉᚠᚨᚱ</div>
+
+            <div id="dailyQuote" style="font-size: 20px; color: #d4c9b8; font-family: 'Georgia', serif; line-height: 1.8; font-style: italic; max-width: 750px; margin: 0 auto 12px;">
+                «Познай себя, и ты познаешь мир.»
+            </div>
+            <div style="font-size: 13px; color: #6a5f50; letter-spacing: 2px;" id="quoteAuthor">— из Старшей Эдды</div>
+
+            <div style="margin: 18px auto 0; width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,160,80,0.2), transparent);"></div>
+
+            <button onclick="updateQuote()" style="margin-top: 15px; background: rgba(201,160,80,0.05); border: 1px solid rgba(201,160,80,0.1); border-radius: 30px; padding: 9px 26px; color: #6a5f50; font-size: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s;">
+                ⟳ Обновить
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <p>ᛝᚲᚷᛉᚠᚨᚱ · руны Старшего Футарка</p>
+        <p style="margin-top: 8px;">
+            <a href="https://t.me/FutharkRunes">Контакты</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 11px; opacity: 0.7;">
+            © 2026 · ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и мудростью
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    /* ===== БОКОВОЕ МЕНЮ ===== */
+    (function() {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navClose');
+
+        if (!burger || !nav || !overlay) return;
+
+        function openMenu() {
+            nav.classList.add('open');
+            overlay.classList.add('open');
+            burger.classList.add('active');
+            burger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
+        }
+
+        function closeMenu() {
+            nav.classList.remove('open');
+            overlay.classList.remove('open');
+            burger.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+
+        burger.addEventListener('click', function() {
+            if (nav.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        nav.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+
+    /* ===== ЦИТАТА ДНЯ ===== */
+    const quotes = [
+        { text: 'Познай себя, и ты познаешь мир. Познай руны — и ты познаешь себя.', author: 'из Старшей Эдды' },
+        { text: 'Руны — это не предсказание судьбы, а подсказки на пути. Они показывают возможные дороги, но выбирать тебе.', author: 'скандинавская традиция' },
+        { text: 'Умирают люди, умирают боги — но руны и память о них живут в тех, кто помнит.', author: 'из Старшей Эдды' },
+        { text: 'Мудрость приходит к тем, кто умеет слушать тишину и слышать голос камней.', author: 'северная мудрость' },
+        { text: 'Дар должен быть равноценен дару. Так сохраняется гармония в мире.', author: 'руна Гебо' },
+        { text: 'Сила не в том, чтобы победить всех, а в том, чтобы не сдаваться, даже когда кажется, что всё потеряно.', author: 'скандинавская традиция' },
+        { text: 'Ветер сдувает старые следы, но не уничтожает их — он превращает их в новые пути.', author: 'северная мудрость' },
+        { text: 'Тот, кто слышит свой внутренний голос, никогда не попадёт в ловушку, поставленную другими.', author: 'руна Альгиз' },
+        { text: 'Человек силён своими корнями. Помни своих предков, и ты никогда не потеряешь себя.', author: 'руна Манназ' },
+        { text: 'Огонь — это свет во тьме. Зажги его, и ты увидишь путь, который искал.', author: 'руна Кеназ' },
+        { text: 'Что посеешь, то и пожнёшь. Жди своего часа, и урожай придёт, когда придёт время.', author: 'руна Йера' },
+        { text: 'После ночи всегда приходит рассвет. Свет приходит к тем, кто ждёт его с верой.', author: 'руна Дагаз' },
+        { text: 'Честь дороже жизни. Сражайся за правду, даже если это стоит тебе всего.', author: 'руна Тейваз' },
+        { text: 'Сила нужна тому, кто хочет победить, но ещё важнее — сила духа, чтобы не сдаться.', author: 'руна Уруз' },
+        { text: 'Богатство — утешение для человека, но оно должно быть разделено, иначе принесёт лишь горе.', author: 'руна Феху' },
+        { text: 'Лёд скрывает течение, но не останавливает его. Время тишины — это время роста.', author: 'руна Иса' }
+    ];
+
+    let currentQuoteIndex = -1;
+
+    function updateDailyQuote() {
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+        const index = dayOfYear % quotes.length;
+        currentQuoteIndex = index;
+        const q = quotes[index];
+        document.getElementById('dailyQuote').textContent = '«' + q.text + '»';
+        document.getElementById('quoteAuthor').textContent = '— ' + q.author;
+    }
+
+    function updateQuote() {
+        let newIndex;
+        do { newIndex = Math.floor(Math.random() * quotes.length); }
+        while (newIndex === currentQuoteIndex && quotes.length > 1);
+        currentQuoteIndex = newIndex;
+        const q = quotes[newIndex];
+        document.getElementById('dailyQuote').textContent = '«' + q.text + '»';
+        document.getElementById('quoteAuthor').textContent = '— ' + q.author;
+    }
+
+    updateDailyQuote();
+
+    /* ===== SERVICE WORKER ===== */
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('✅ SW зарегистрирован'))
+                .catch(err => console.log('❌ SW:', err));
+        });
+    }
+</script>
+</body>
+</html>

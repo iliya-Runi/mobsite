@@ -39,7 +39,8 @@ header {
     border-bottom: 1px solid rgba(201,160,80,0.25);
     margin-bottom: 24px;
     position: relative;
-    z-index: 100;
+    /* ✅ ИСПРАВЛЕНО: убран z-index: 100 — он создавал свой stacking context,
+       из-за чего nav (внутри header) не мог подняться выше .nav-overlay */
 }
 
 .logo {
@@ -95,13 +96,14 @@ header {
 .nav-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(0,0,0,0.7);
+    /* ✅ ИСПРАВЛЕНО: убран backdrop-filter — он давал «туман»
+       и ломал z-index на мобильных */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 190;
+    /* ✅ ИСПРАВЛЕНО: z-index 190 → 150 (ниже меню 200, выше шапки) */
+    z-index: 150;
 }
 
 .nav-overlay.open {
@@ -126,6 +128,9 @@ nav {
     transform: translateX(-100%);
     transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 200;
+    /* ✅ ДОБАВЛЕНО: will-change помогает браузеру держать меню
+       в отдельном слое поверх оверлея */
+    will-change: transform;
     box-shadow: 10px 0 40px rgba(0,0,0,0.5);
     -webkit-overflow-scrolling: touch;
     display: flex;
@@ -156,6 +161,7 @@ nav.open {
     transition: 0.2s;
     -webkit-tap-highlight-color: transparent;
     line-height: 1;
+    z-index: 5;
 }
 
 .nav-close:active { background: rgba(201,160,80,0.15); }
@@ -542,21 +548,33 @@ footer a:hover { color: #c9a050; }
     /* На планшете+ бургер скрыт, меню всегда видно */
     .burger { display: none; }
 
+    /* На планшете оверлей не нужен */
+    .nav-overlay { display: none; }
+
+    /* Кнопка закрытия и заголовок меню на планшете тоже не нужны */
+    .nav-close, .nav-title { display: none; }
+
     nav {
         position: static;
         max-height: none;
         opacity: 1;
         padding: 0;
         background: transparent;
+        background-image: none;
         border: none;
         box-shadow: none;
         border-radius: 0;
         overflow: visible;
+        transform: none;
+        will-change: auto;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         gap: 6px;
         flex: 1 1 100%;
+        width: auto;
+        max-width: none;
+        transition: none;
     }
 
     .nav-row {

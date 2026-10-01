@@ -82,9 +82,8 @@
             margin-top: 12px;
         }
 
-        /* ===== Расклад рун (общий для 3 и 5) ===== */
-        .three-runes-container,
-        .five-runes-container {
+        /* ===== Расклад трёх рун ===== */
+        .three-runes-container {
             display: flex;
             justify-content: center;
             align-items: stretch;
@@ -93,8 +92,7 @@
             flex-wrap: wrap;
         }
 
-        .three-runes-container .rune-card-item,
-        .five-runes-container .rune-card-item {
+        .three-runes-container .rune-card-item {
             text-align: center;
             background: rgba(20,20,35,0.4);
             border: 1px solid rgba(201,160,80,0.08);
@@ -109,8 +107,7 @@
             transition: 0.3s;
         }
 
-        .three-runes-container .rune-card-item .position-label,
-        .five-runes-container .rune-card-item .position-label {
+        .three-runes-container .rune-card-item .position-label {
             font-size: 10px;
             color: #6a5f50;
             letter-spacing: 1.5px;
@@ -118,8 +115,7 @@
             margin-bottom: 4px;
         }
 
-        .three-runes-container .rune-card-item .symbol,
-        .five-runes-container .rune-card-item .symbol {
+        .three-runes-container .rune-card-item .symbol {
             font-size: 36px;
             color: #c9a050;
             display: block;
@@ -127,16 +123,14 @@
             line-height: 1.1;
         }
 
-        .three-runes-container .rune-card-item .name,
-        .five-runes-container .rune-card-item .name {
+        .three-runes-container .rune-card-item .name {
             font-size: 14px;
             color: #e8ddd0;
             letter-spacing: 1px;
             margin-top: 4px;
         }
 
-        .three-runes-container .rune-card-item .meaning,
-        .five-runes-container .rune-card-item .meaning {
+        .three-runes-container .rune-card-item .meaning {
             font-size: 11px;
             color: #b8ab9a;
             font-family: 'Georgia', serif;
@@ -144,22 +138,94 @@
             margin-top: 6px;
         }
 
-        /* В карточке с 5 рунами руны чуть меньше — они должны влезть */
+        /* ===== Кельтский крест — настоящий крест ===== */
+        .five-runes-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 6px;
+            margin: 16px auto 14px;
+            max-width: 320px;
+            width: 100%;
+        }
+
         .five-runes-container .rune-card-item {
-            padding: 12px 6px;
+            text-align: center;
+            background: rgba(20,20,35,0.4);
+            border: 1px solid rgba(201,160,80,0.08);
+            border-radius: 12px;
+            padding: 8px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            min-width: 0;
         }
-        .five-runes-container .rune-card-item .symbol {
-            font-size: 30px;
-        }
-        .five-runes-container .rune-card-item .name {
-            font-size: 12px;
-        }
-        .five-runes-container .rune-card-item .meaning {
-            font-size: 10px;
-        }
+
+        /* Позиции в кресте */
+        #crossPast       { grid-column: 2; grid-row: 1; }   /* сверху */
+        #crossObstacle   { grid-column: 1; grid-row: 2; }   /* слева */
+        #crossSituation  { grid-column: 2; grid-row: 2; }   /* центр */
+        #crossOutcome    { grid-column: 3; grid-row: 2; }   /* справа */
+        #crossFuture     { grid-column: 2; grid-row: 3; }   /* снизу */
+
         .five-runes-container .rune-card-item .position-label {
-            font-size: 9px;
+            font-size: 8px;
+            color: #6a5f50;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+            line-height: 1;
+        }
+
+        .five-runes-container .rune-card-item .symbol {
+            font-size: 26px;
+            color: #c9a050;
+            display: block;
+            text-shadow: 0 0 20px rgba(201,160,80,0.1);
+            line-height: 1;
+        }
+
+        .five-runes-container .rune-card-item .name {
+            font-size: 11px;
+            color: #e8ddd0;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        /* Итоговые описания рун креста — под самим крестом */
+        .cross-interpretation {
+            margin-top: 14px;
+            text-align: left;
+            padding: 12px 10px;
+            background: rgba(20,20,35,0.3);
+            border: 1px solid rgba(201,160,80,0.06);
+            border-radius: 12px;
+        }
+
+        .cross-interpretation .interpretation-item {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(201,160,80,0.05);
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: #b8ab9a;
+            font-family: 'Georgia', serif;
+        }
+
+        .cross-interpretation .interpretation-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .cross-interpretation .interpretation-item strong {
+            color: #c9a050;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            display: inline-block;
+            min-width: 90px;
         }
 
         /* ===== Гадание на одну руну ===== */
@@ -390,17 +456,24 @@
             }
             .rune-daily-card { padding: 26px 22px; }
 
-            .three-runes-container,
-            .five-runes-container { gap: 14px; }
+            .three-runes-container { gap: 14px; }
             .three-runes-container .rune-card-item { padding: 18px 12px; }
             .three-runes-container .rune-card-item .symbol { font-size: 44px; }
             .three-runes-container .rune-card-item .name { font-size: 16px; }
             .three-runes-container .rune-card-item .meaning { font-size: 12px; }
 
-            .five-runes-container .rune-card-item { padding: 14px 8px; }
-            .five-runes-container .rune-card-item .symbol { font-size: 34px; }
-            .five-runes-container .rune-card-item .name { font-size: 13px; }
-            .five-runes-container .rune-card-item .meaning { font-size: 11px; }
+            .five-runes-container {
+                max-width: 380px;
+                gap: 8px;
+            }
+            .five-runes-container .rune-card-item { padding: 12px 6px; }
+            .five-runes-container .rune-card-item .symbol { font-size: 32px; }
+            .five-runes-container .rune-card-item .name { font-size: 12px; }
+            .five-runes-container .rune-card-item .position-label { font-size: 9px; }
+
+            .cross-interpretation { padding: 14px 14px; }
+            .cross-interpretation .interpretation-item { font-size: 12.5px; }
+            .cross-interpretation .interpretation-item strong { font-size: 12px; min-width: 100px; }
 
             .oracle-circle { width: 150px; height: 150px; }
             .oracle-circle .symbol { font-size: 60px; }
@@ -541,40 +614,37 @@
                 <p>Глубокий расклад из пяти рун: ситуация, препятствие, прошлое, будущее, итог</p>
 
                 <div class="five-runes-container" id="fiveRunesContainer">
-                    <div class="rune-card-item" id="crossSituation">
-                        <div class="position-label">✦ Ситуация</div>
-                        <span class="symbol">ᚠ</span>
-                        <div class="name">Феху</div>
-                        <div class="meaning">Что происходит сейчас</div>
+                    <div class="rune-card-item" id="crossPast">
+                        <div class="position-label">✦ Прошлое</div>
+                        <span class="symbol">ᚦ</span>
+                        <div class="name">Турисаз</div>
                     </div>
                     <div class="rune-card-item" id="crossObstacle">
                         <div class="position-label">✦ Препятствие</div>
                         <span class="symbol">ᚢ</span>
                         <div class="name">Уруз</div>
-                        <div class="meaning">Что мешает</div>
                     </div>
-                    <div class="rune-card-item" id="crossPast">
-                        <div class="position-label">✦ Прошлое</div>
-                        <span class="symbol">ᚦ</span>
-                        <div class="name">Турисаз</div>
-                        <div class="meaning">Что привело к этому</div>
-                    </div>
-                    <div class="rune-card-item" id="crossFuture">
-                        <div class="position-label">✦ Будущее</div>
-                        <span class="symbol">ᚨ</span>
-                        <div class="name">Ансуз</div>
-                        <div class="meaning">Что ждёт впереди</div>
+                    <div class="rune-card-item" id="crossSituation">
+                        <div class="position-label">✦ Ситуация</div>
+                        <span class="symbol">ᚠ</span>
+                        <div class="name">Феху</div>
                     </div>
                     <div class="rune-card-item" id="crossOutcome">
                         <div class="position-label">✦ Итог</div>
                         <span class="symbol">ᚱ</span>
                         <div class="name">Райдо</div>
-                        <div class="meaning">К чему всё идёт</div>
+                    </div>
+                    <div class="rune-card-item" id="crossFuture">
+                        <div class="position-label">✦ Будущее</div>
+                        <span class="symbol">ᚨ</span>
+                        <div class="name">Ансуз</div>
                     </div>
                 </div>
 
                 <button class="five-runes-btn" id="fiveRunesBtn">✦ Разложить крест ✦</button>
                 <div class="footnote">Расклад «Кельтский крест» (упрощённый, 5 рун)</div>
+
+                <div class="cross-interpretation" id="crossInterpretation" style="display: none;"></div>
             </div>
 
         </div>
@@ -806,22 +876,46 @@
     /* ===== 3. КЕЛЬТСКИЙ КРЕСТ (5 РУН) ===== */
     (function() {
         const btn = document.getElementById('fiveRunesBtn');
-        const situation = document.getElementById('crossSituation');
-        const obstacle = document.getElementById('crossObstacle');
         const past = document.getElementById('crossPast');
-        const future = document.getElementById('crossFuture');
+        const obstacle = document.getElementById('crossObstacle');
+        const situation = document.getElementById('crossSituation');
         const outcome = document.getElementById('crossOutcome');
+        const future = document.getElementById('crossFuture');
+        const interpretation = document.getElementById('crossInterpretation');
 
         if (!btn) return;
 
         function update() {
-            const positions = [situation, obstacle, past, future, outcome];
-            positions.forEach(card => {
+            const cards = [
+                { el: past,      pos: 'Прошлое' },
+                { el: obstacle,  pos: 'Препятствие' },
+                { el: situation, pos: 'Ситуация' },
+                { el: outcome,   pos: 'Итог' },
+                { el: future,    pos: 'Будущее' }
+            ];
+
+            const details = [];
+
+            cards.forEach(({ el, pos }) => {
                 const data = getRuneCardData(getRandomRune());
-                card.querySelector('.symbol').textContent = data.symbol;
-                card.querySelector('.name').textContent = data.name;
-                card.querySelector('.meaning').textContent = data.meaning;
+                el.querySelector('.symbol').textContent = data.symbol;
+                el.querySelector('.name').textContent = data.name;
+                details.push({
+                    pos: pos,
+                    symbol: data.symbol,
+                    name: data.name,
+                    meaning: data.meaning
+                });
             });
+
+            if (interpretation) {
+                interpretation.innerHTML = details.map(d => `
+                    <div class="interpretation-item">
+                        <strong>${d.pos}:</strong> ${d.symbol} <b style="color:#e8ddd0;">${d.name}</b> — ${d.meaning}
+                    </div>
+                `).join('');
+                interpretation.style.display = 'block';
+            }
         }
 
         btn.addEventListener('click', function() {

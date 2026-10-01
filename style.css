@@ -1,0 +1,773 @@
+/* ============================================================
+   СТАРШИЙ ФУТАРК — style.css
+   Mobile-first. База = телефон. Расширения через min-width.
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    font-family: 'Cinzel', 'Georgia', serif;
+    background: #0d0d1a;
+    color: #d4c9b8;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(201,160,80,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,160,80,0.03) 0%, transparent 50%);
+    padding: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* ============================================================
+   ШАПКА
+   ============================================================ */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0 18px;
+    border-bottom: 1px solid rgba(201,160,80,0.25);
+    margin-bottom: 24px;
+    position: relative;
+    /* ✅ ИСПРАВЛЕНО: убран z-index: 100 — он создавал свой stacking context,
+       из-за чего nav (внутри header) не мог подняться выше .nav-overlay */
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #c9a050;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(201,160,80,0.2);
+    line-height: 1.1;
+    flex: 1;
+}
+
+.logo span {
+    font-size: 11px;
+    color: #8a7a6a;
+    letter-spacing: 1.5px;
+    display: block;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+/* ===== БУРГЕР ===== */
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 42px;
+    height: 42px;
+    padding: 9px 8px;
+    background: rgba(201,160,80,0.06);
+    border: 1px solid rgba(201,160,80,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 210;
+}
+
+.burger:active { background: rgba(201,160,80,0.15); }
+
+.burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #c9a050;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* ===== ЗАТЕМНЕНИЕ ФОНА ===== */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    /* ✅ ИСПРАВЛЕНО: убран backdrop-filter — он давал «туман»
+       и ломал z-index на мобильных */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* ✅ ИСПРАВЛЕНО: z-index 190 → 150 (ниже меню 200, выше шапки) */
+    z-index: 150;
+}
+
+.nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== МЕНЮ (mobile): выезжает слева ===== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85vw;
+    background: #14142a;
+    background-image:
+        radial-gradient(ellipse at 100% 0%, rgba(201,160,80,0.08) 0%, transparent 60%);
+    border-right: 1px solid rgba(201,160,80,0.15);
+    padding: 80px 12px 20px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 200;
+    /* ✅ ДОБАВЛЕНО: will-change помогает браузеру держать меню
+       в отдельном слое поверх оверлея */
+    will-change: transform;
+    box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+nav.open {
+    transform: translateX(0);
+}
+
+/* Кнопка закрытия внутри меню */
+.nav-close {
+    position: absolute;
+    top: 18px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(201,160,80,0.06);
+    border: 1px solid rgba(201,160,80,0.15);
+    border-radius: 8px;
+    color: #c9a050;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+    z-index: 5;
+}
+
+.nav-close:active { background: rgba(201,160,80,0.15); }
+
+/* Заголовок меню */
+.nav-title {
+    position: absolute;
+    top: 24px;
+    left: 18px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #6a5f50;
+    text-transform: uppercase;
+}
+
+.nav-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nav-row + .nav-row {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(201,160,80,0.08);
+}
+
+nav a {
+    color: #b8ab9a;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    padding: 12px 14px;
+    border-radius: 8px;
+    display: block;
+    border-left: 3px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+nav a:active {
+    color: #c9a050;
+    background: rgba(201,160,80,0.08);
+    border-left-color: #c9a050;
+}
+
+nav a.active {
+    color: #c9a050;
+    background: rgba(201,160,80,0.06);
+    border-left-color: #c9a050;
+}
+
+/* Тултипы на мобилке скрываем */
+.tooltip { display: none; }
+
+.support-link {
+    color: #c9a050 !important;
+    border-left-color: rgba(201,160,80,0.4) !important;
+}
+
+/* Блокируем скролл страницы, пока меню открыто */
+body.nav-open {
+    overflow: hidden;
+}
+
+/* ============================================================
+   ЗАГОЛОВКИ / ГЕРОЙ
+   ============================================================ */
+
+h1 {
+    font-size: 24px;
+    color: #c9a050;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+.subtitle {
+    text-align: center;
+    color: #b8ab9a;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.hero {
+    text-align: center;
+    padding: 30px 16px 35px;
+    background: linear-gradient(180deg, rgba(201,160,80,0.05) 0%, transparent 100%);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(201,160,80,0.1);
+}
+
+.hero h1 { font-size: 26px; letter-spacing: 4px; }
+
+.hero .subtitle { margin-bottom: 0; }
+
+/* ============================================================
+   ЗАГОЛОВКИ АТТОВ
+   ============================================================ */
+
+.att-title {
+    text-align: center;
+    color: #c9a050;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin: 40px 0 20px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(201,160,80,0.1);
+    border-bottom: 1px solid rgba(201,160,80,0.1);
+    text-transform: uppercase;
+}
+
+.att-title span {
+    color: #6a5f50;
+    font-size: 11px;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 4px;
+    font-weight: 400;
+}
+
+/* ============================================================
+   СЕТКА РУН
+   ============================================================ */
+
+.rune-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0 24px;
+}
+
+.rune-grid a { text-decoration: none; color: inherit; display: block; }
+
+.rune-card {
+    background: rgba(30,30,50,0.6);
+    border: 1px solid rgba(201,160,80,0.12);
+    border-radius: 14px;
+    padding: 16px 8px 14px;
+    text-align: center;
+    height: 100%;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rune-card:active { transform: scale(0.97); }
+
+.rune-card .symbol {
+    font-size: 34px;
+    color: #c9a050;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.rune-card .name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e8ddd0;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.rune-card .meaning {
+    font-size: 11.5px;
+    color: #a89988;
+    line-height: 1.45;
+    font-family: 'Georgia', serif;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rune-card .meaning span {
+    display: block;
+    font-size: 10px;
+    color: #c9a050;
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+}
+
+/* ============================================================
+   СТРАНИЦА РУНЫ
+   ============================================================ */
+
+.rune-page {
+    background: rgba(20,20,35,0.6);
+    border-radius: 16px;
+    padding: 24px 16px;
+    border: 1px solid rgba(201,160,80,0.12);
+    margin-bottom: 24px;
+}
+
+.rune-header { text-align: center; margin-bottom: 22px; }
+
+.rune-header .symbol {
+    font-size: 64px;
+    color: #c9a050;
+    display: block;
+    text-shadow: 0 0 30px rgba(201,160,80,0.15);
+    margin-bottom: 6px;
+}
+
+.rune-header .name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #e8ddd0;
+    letter-spacing: 4px;
+}
+
+.rune-header .name-en {
+    font-size: 13px;
+    color: #6a5f50;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.rune-header .att {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 18px;
+    border: 1px solid rgba(201,160,80,0.25);
+    border-radius: 30px;
+    font-size: 11px;
+    color: #c9a050;
+    letter-spacing: 2px;
+}
+
+.rune-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0 25px;
+}
+
+.detail-block {
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    padding: 18px 16px;
+    border: 1px solid rgba(201,160,80,0.06);
+}
+
+.detail-block h3 {
+    color: #c9a050;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.detail-block p,
+.detail-block li {
+    color: #b8ab9a;
+    font-size: 14px;
+    line-height: 1.75;
+    font-family: 'Georgia', serif;
+}
+
+.detail-block ul { list-style: none; padding: 0; }
+
+.detail-block ul li {
+    padding: 6px 0 6px 18px;
+    border-bottom: 1px solid rgba(201,160,80,0.05);
+    position: relative;
+}
+
+.detail-block ul li::before {
+    content: "✦";
+    color: #c9a050;
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+}
+
+.rune-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201,160,80,0.1);
+}
+
+.rune-nav a {
+    color: #c9a050;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    padding: 10px 16px;
+    border: 1px solid rgba(201,160,80,0.15);
+    border-radius: 30px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rune-nav a:active { background: rgba(201,160,80,0.1); }
+
+.rune-nav .back-link { border-color: transparent; color: #6a5f50; }
+
+/* ============================================================
+   ФУТЕР
+   ============================================================ */
+
+footer {
+    margin-top: 30px;
+    padding: 22px 0 16px;
+    border-top: 1px solid rgba(201,160,80,0.15);
+    text-align: center;
+    color: #6a5f50;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+}
+
+footer a { color: #8a7a6a; text-decoration: none; transition: 0.3s; }
+footer a:hover { color: #c9a050; }
+
+/* ============================================================
+   ОБЩЕЕ
+   ============================================================ */
+
+.quote-block {
+    text-align: center;
+    padding: 28px 18px;
+    background: rgba(20,20,35,0.4);
+    border-radius: 16px;
+    border: 1px solid rgba(201,160,80,0.06);
+    margin: 20px 0 30px;
+}
+
+.quote-block .quote {
+    font-size: 17px;
+    color: #d4c9b8;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quote-block .author {
+    font-size: 12px;
+    color: #6a5f50;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+/* ============================================================
+   ПЛАНШЕТ (>= 768px)
+   ============================================================ */
+
+@media (min-width: 768px) {
+    body { padding: 20px; }
+
+    .container { padding: 0 15px; }
+
+    header {
+        flex-wrap: wrap;
+        padding: 20px 0 26px;
+        margin-bottom: 35px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(201,160,80,0.3);
+    }
+
+    .logo { font-size: 26px; letter-spacing: 4px; flex: 0 0 auto; }
+    .logo span { font-size: 14px; letter-spacing: 2px; }
+
+    /* На планшете+ бургер скрыт, меню всегда видно */
+    .burger { display: none; }
+
+    /* На планшете оверлей не нужен */
+    .nav-overlay { display: none; }
+
+    /* Кнопка закрытия и заголовок меню на планшете тоже не нужны */
+    .nav-close, .nav-title { display: none; }
+
+    nav {
+        position: static;
+        max-height: none;
+        opacity: 1;
+        padding: 0;
+        background: transparent;
+        background-image: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: visible;
+        transform: none;
+        will-change: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
+        flex: 1 1 100%;
+        width: auto;
+        max-width: none;
+        transition: none;
+    }
+
+    .nav-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 8px;
+        width: 100%;
+    }
+
+    .nav-row + .nav-row {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .nav-row-left { justify-content: flex-start; }
+    .nav-row-right { justify-content: flex-end; }
+
+    nav a {
+        display: inline-block;
+        padding: 6px 10px 4px;
+        font-size: 13px;
+        letter-spacing: 1px;
+        border-radius: 0;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+    }
+
+    nav a:hover {
+        color: #c9a050;
+        background: transparent;
+        border-left-color: transparent;
+        border-bottom-color: #c9a050;
+    }
+
+    nav a.active {
+        color: #c9a050;
+        background: transparent;
+        border-bottom-color: #c9a050;
+    }
+
+    .support-link {
+        border-left-color: transparent !important;
+        border-bottom-color: rgba(201,160,80,0.3) !important;
+    }
+
+    /* На планшете можно вернуть тултипы */
+    .tooltip {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        width: 230px;
+        background: rgba(20,20,35,0.95);
+        color: #d4c9b8;
+        text-align: center;
+        padding: 14px 18px;
+        border-radius: 12px;
+        border: 1px solid rgba(201,160,80,0.2);
+        font-family: 'Georgia', serif;
+        font-size: 14px;
+        line-height: 1.6;
+        position: absolute;
+        top: calc(100% + 18px);
+        left: 50%;
+        transform: translateX(-50%) translateY(-5px);
+        transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        z-index: 100;
+        pointer-events: none;
+        white-space: normal;
+    }
+
+    nav a { position: relative; }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 8px solid transparent;
+        border-bottom-color: rgba(201,160,80,0.2);
+    }
+
+    nav a:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .tooltip .highlight {
+        color: #e8c85a;
+        font-weight: 700;
+        font-family: 'Cinzel', serif;
+    }
+
+    .tooltip .rune-icon {
+        color: #e8c85a;
+        font-size: 20px;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    h1 { font-size: 32px; letter-spacing: 4px; }
+    .subtitle { font-size: 16px; }
+
+    .hero { padding: 50px 30px 60px; margin-bottom: 45px; }
+    .hero h1 { font-size: 42px; letter-spacing: 6px; }
+
+    .att-title { font-size: 24px; letter-spacing: 6px; margin: 55px 0 28px; }
+    .att-title span { font-size: 13px; letter-spacing: 3px; }
+
+    .rune-grid {
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 20px;
+    }
+
+    .rune-card { min-height: 240px; padding: 20px 12px 18px; }
+    .rune-card .symbol { font-size: 42px; }
+    .rune-card .name { font-size: 18px; }
+    .rune-card .meaning { font-size: 13px; }
+    .rune-card .meaning span { font-size: 11px; }
+
+    .rune-page { padding: 40px 34px; border-radius: 20px; }
+    .rune-header .symbol { font-size: 88px; }
+    .rune-header .name { font-size: 36px; }
+    .rune-header .name-en { font-size: 16px; }
+    .rune-header .att { font-size: 12px; padding: 6px 22px; }
+
+    .rune-details { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .detail-block { padding: 22px 20px; }
+
+    .rune-nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 26px;
+        margin-top: 32px;
+    }
+
+    .rune-nav a { padding: 8px 18px; }
+
+    .quote-block { padding: 36px; margin: 30px 0 40px; }
+    .quote-block .quote { font-size: 20px; }
+}
+
+/* ============================================================
+   ДЕСКТОП (>= 1024px)
+   ============================================================ */
+
+@media (min-width: 1024px) {
+    header {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    nav {
+        flex: 1;
+        align-items: flex-end;
+        padding-left: 20px;
+    }
+
+    .nav-row { gap: 8px 14px; }
+
+    nav a { font-size: 14px; padding: 6px 10px 4px; }
+
+    .hero h1 { font-size: 48px; }
+
+    .rune-grid { gap: 25px; }
+
+    .rune-card { min-height: 280px; }
+    .rune-card .symbol { font-size: 48px; }
+    .rune-card .name { font-size: 20px; }
+    .rune-card .meaning { font-size: 13px; }
+
+    .rune-page { padding: 50px 45px; }
+    .rune-header .symbol { font-size: 100px; }
+    .rune-header .name { font-size: 42px; }
+    .rune-header .name-en { font-size: 18px; }
+
+    .rune-details { gap: 30px; }
+}
+
+/* ============================================================
+   УТИЛИТЫ
+   ============================================================ */
+
+.lang-switch-group { display: none; } /* EN убран */
+
+/* Отключаем hover-эффекты на тач-устройствах */
+@media (hover: none) {
+    .rune-card:hover { transform: none; border-color: rgba(201,160,80,0.12); box-shadow: none; }
+    .rune-card:active { transform: scale(0.97); border-color: #c9a050; }
+}

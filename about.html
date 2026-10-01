@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c9a050">
+    <meta name="description" content="О проекте «Старший Футарк» — сайт о 24 рунах, скандинавской мифологии и рунической традиции.">
+    <title>О сайте — Руны Старшего Футарка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================
+           УНИКАЛЬНЫЕ СТИЛИ СТРАНИЦЫ «О САЙТЕ»
+           ============================================================ */
+
+        .about-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10px 0 20px;
+        }
+
+        .about-page h1 {
+            font-size: 24px;
+            color: #c9a050;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(201,160,80,0.2);
+            line-height: 1.25;
+        }
+
+        .about-page h2 {
+            color: #c9a050;
+            font-size: 18px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            line-height: 1.3;
+        }
+
+        .about-page p {
+            color: #b8ab9a;
+            line-height: 1.8;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            margin-bottom: 14px;
+        }
+
+        .about-page ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 20px;
+        }
+
+        .about-page ul li {
+            color: #b8ab9a;
+            font-size: 13.5px;
+            line-height: 1.75;
+            padding: 6px 0 6px 20px;
+            border-bottom: 1px solid rgba(201,160,80,0.05);
+            position: relative;
+            font-family: 'Georgia', serif;
+        }
+
+        .about-page ul li:last-child {
+            border-bottom: none;
+        }
+
+        .about-page ul li::before {
+            content: "✦";
+            color: #c9a050;
+            position: absolute;
+            left: 0;
+            font-size: 11px;
+            top: 8px;
+        }
+
+        .about-page .highlight {
+            color: #c9a050;
+            font-weight: 700;
+        }
+
+        .about-page .quote-block {
+            background: rgba(20,20,35,0.5);
+            border-left: 3px solid #c9a050;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            color: #d4c9b8;
+            font-family: 'Georgia', serif;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .about-page .rune-signature {
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 8px;
+            color: #c9a050;
+            opacity: 0.4;
+            margin-top: 32px;
+        }
+
+        .about-back {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 10px 26px;
+            border: 1px solid rgba(201,160,80,0.2);
+            border-radius: 30px;
+            color: #c9a050;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .about-back:active {
+            background: rgba(201,160,80,0.12);
+            border-color: #c9a050;
+        }
+
+        .about-back-wrapper {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* ===== Планшет+ ===== */
+        @media (min-width: 768px) {
+            .about-page { padding: 30px 0 40px; }
+            .about-page h1 { font-size: 32px; letter-spacing: 4px; margin-bottom: 30px; padding-bottom: 20px; }
+            .about-page h2 { font-size: 22px; margin-top: 35px; margin-bottom: 15px; }
+            .about-page p { font-size: 16px; line-height: 1.9; margin-bottom: 18px; }
+            .about-page ul li { font-size: 15px; padding: 6px 0 6px 24px; }
+            .about-page ul li::before { font-size: 12px; top: 9px; }
+            .about-page .quote-block { padding: 20px 30px; font-size: 15px; }
+            .about-page .rune-signature { font-size: 28px; margin-top: 40px; }
+            .about-back { padding: 10px 30px; }
+            .about-back:hover {
+                background: rgba(201,160,80,0.12);
+                border-color: #c9a050;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            ᛝᚲᚷᛉᚠᚨᚱ
+            <span>Старший Футарк · 24 руны</span>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="nav">
+            <div class="nav-title">Меню</div>
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
+
+            <div class="nav-row nav-row-left">
+                <a href="index.html">Главная</a>
+                <a href="runes.html">Руны Футарха</a>
+                <a href="rune-horoscope.html">Рунический гороскоп</a>
+                <a href="rune-divination.html">Гадание на рунах</a>
+                <a href="rune-magic.html">Магия</a>
+                <a href="gods.html">Асы Боги Скандинавии</a>
+                <a href="about.html" class="active">О сайте</a>
+            </div>
+            <div class="nav-row nav-row-right">
+                <a href="feedback.html">📧 Обратная связь</a>
+                <a href="support.html" class="support-link">₽ Финансовая поддержка сайта</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== СТРАНИЦА «О САЙТЕ» ===== -->
+    <section class="about-page">
+
+        <h1>✦ О сайте ✦</h1>
+
+        <p>
+            Этот сайт посвящён <span class="highlight">Старшему Футарку</span> — древнейшей рунической системе,
+            которая использовалась германскими и скандинавскими народами с II по VIII век нашей эры.
+            Здесь собраны все <span class="highlight">24 руны</span>, разделённые на три атта (эттира),
+            с их значениями, символикой и мифологическими корнями.
+        </p>
+
+        <h2>🌿 Зачем этот сайт</h2>
+        <p>
+            Я создал этот проект, чтобы познакомить вас с рунической традицией в её <span class="highlight">аутентичном</span> виде —
+            без искажений, современных гадательных наслоений и упрощений. Здесь руны показаны так, как их видели древние мастера:
+            <span class="highlight">целостными, прямыми и наполненными смыслом</span>.
+        </p>
+
+        <h2>⚔️ Почему нет перевёрнутых рун?</h2>
+        <p>
+            В древности руны не переворачивали. Перевёрнутые значения — это <span class="highlight">современная традиция</span>,
+            появившаяся в XX веке под влиянием таро. Для скандинавов руна была целостным символом —
+            её сила не зависела от положения. Мы показываем руны так, как их вырезали на камнях и оружии.
+        </p>
+
+        <h2>📚 Источники вдохновения</h2>
+        <ul>
+            <li>«Старшая Эдда» — сборник древнескандинавских песен о богах и героях</li>
+            <li>«Младшая Эдда» Снорри Стурлусона</li>
+            <li>Археологические находки — рунические камни и амулеты</li>
+            <li>Работы современных рунологов и историков</li>
+        </ul>
+
+        <div class="rune-signature">
+            ᚲᛃᚨᛉᚷᚠᚱ
+        </div>
+
+        <div class="about-back-wrapper">
+            <a href="index.html" class="about-back">← Вернуться на главную</a>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>ᛝᚲᚷᛉᚠᚨᚱ · 24 руны Старшего Футарка</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Главная</a> ·
+            <a href="runes.html">Руны</a> ·
+            <a href="about.html">О сайте</a> ·
+            <a href="https://t.me/FutharkRunes" target="_blank">Контакты</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 11px; opacity: 0.7;">
+            © 2026 · ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и мудростью
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    /* ===== БОКОВОЕ МЕНЮ ===== */
+    (function() {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navClose');
+
+        if (!burger || !nav || !overlay) return;
+
+        function openMenu() {
+            nav.classList.add('open');
+            overlay.classList.add('open');
+            burger.classList.add('active');
+            burger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
+        }
+        function closeMenu() {
+            nav.classList.remove('open');
+            overlay.classList.remove('open');
+            burger.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+
+        burger.addEventListener('click', function() {
+            if (nav.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+</script>
+</body>
+</html>

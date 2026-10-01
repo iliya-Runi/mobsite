@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c9a050">
+    <meta name="description" content="Поддержать создателя сайта «Старший Футарк». Донаты через DonationAlerts и СБП.">
+    <title>Поддержать создателя | Руны Старшего Футарка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================
+           УНИКАЛЬНЫЕ СТИЛИ СТРАНИЦЫ ПОДДЕРЖКИ
+           ============================================================ */
+
+        .support-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 0 20px;
+        }
+
+        .support-page h1 {
+            font-size: 24px;
+            color: #c9a050;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+
+        .support-page .subtitle {
+            text-align: center;
+            color: #b8ab9a;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin-bottom: 26px;
+            line-height: 1.7;
+        }
+
+        /* ===== HERO ===== */
+        .support-hero {
+            background: rgba(20,20,35,0.5);
+            border: 1px solid rgba(201,160,80,0.08);
+            border-radius: 16px;
+            padding: 24px 20px;
+            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .support-hero .left .rune-big {
+            font-size: 56px;
+            color: #c9a050;
+            display: block;
+            text-shadow: 0 0 30px rgba(201,160,80,0.15);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .support-hero .left h2 {
+            font-size: 20px;
+            color: #e8ddd0;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .support-hero .left p {
+            color: #b8ab9a;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            line-height: 1.75;
+        }
+
+        .support-hero .right {
+            text-align: center;
+            background: rgba(201,160,80,0.05);
+            border-radius: 14px;
+            padding: 22px 16px;
+            border: 1px solid rgba(201,160,80,0.1);
+        }
+
+        .support-hero .right .heart {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .support-hero .right .text {
+            color: #b8ab9a;
+            font-size: 13.5px;
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+        }
+
+        .support-hero .right .text strong {
+            color: #c9a050;
+            font-weight: 700;
+        }
+
+        /* ===== ДОНАТЫ ===== */
+        .donate-block {
+            background: rgba(20,20,35,0.4);
+            border: 1px solid rgba(201,160,80,0.08);
+            border-radius: 16px;
+            padding: 24px 18px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .donate-block h2 {
+            color: #c9a050;
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .donate-block > p {
+            color: #b8ab9a;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            line-height: 1.75;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+
+        .donate-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .donate-buttons a {
+            display: inline-block;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            padding: 13px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 13.5px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            border: 1px solid rgba(201,160,80,0.2);
+            background: rgba(201,160,80,0.08);
+            color: #e8c85a;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .donate-buttons a:active {
+            background: rgba(201,160,80,0.2);
+            border-color: #c9a050;
+        }
+
+        .donate-buttons a .icon {
+            margin-right: 6px;
+        }
+
+        .donate-footer-note {
+            margin-top: 18px;
+            font-size: 12.5px;
+            color: #6a5f50;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ===== О СОЗДАТЕЛЕ ===== */
+        .creator-block {
+            background: rgba(20,20,35,0.3);
+            border: 1px solid rgba(201,160,80,0.06);
+            border-radius: 16px;
+            padding: 24px 18px;
+            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+
+        .creator-block h2 {
+            color: #c9a050;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .creator-block .text p {
+            color: #b8ab9a;
+            font-size: 13.5px;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .creator-block .text .highlight {
+            color: #c9a050;
+            font-weight: 700;
+        }
+
+        .creator-block .badges {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .creator-block .badge {
+            background: rgba(201,160,80,0.06);
+            border: 1px solid rgba(201,160,80,0.1);
+            border-radius: 10px;
+            padding: 10px 14px;
+            text-align: center;
+            color: #b8ab9a;
+            font-size: 13px;
+            font-family: 'Georgia', serif;
+        }
+
+        .creator-block .badge .num {
+            color: #c9a050;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Cinzel', serif;
+            margin-right: 4px;
+        }
+
+        /* ===== СОЦСЕТИ ===== */
+        .social-block {
+            text-align: center;
+            margin-bottom: 22px;
+            padding: 22px 18px;
+            background: rgba(20,20,35,0.3);
+            border: 1px solid rgba(201,160,80,0.06);
+            border-radius: 16px;
+        }
+
+        .social-block h3 {
+            color: #c9a050;
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .social-block > p {
+            color: #b8ab9a;
+            font-size: 13.5px;
+            font-family: 'Georgia', serif;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 320px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .social-links .tg {
+            background: #0088cc;
+            color: #ffffff;
+            border: 1px solid #0088cc;
+        }
+
+        .social-links .tg:active {
+            background: #006699;
+            transform: scale(0.98);
+        }
+
+        .social-block .note {
+            margin-top: 14px;
+            font-size: 12.5px;
+            color: #6a5f50;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ===== ПОДПИСЬ / КНОПКА НАЗАД ===== */
+        .rune-signature {
+            text-align: center;
+            font-size: 22px;
+            letter-spacing: 8px;
+            color: #c9a050;
+            opacity: 0.3;
+            margin: 22px 0 12px;
+        }
+
+        .back-home-wrapper {
+            text-align: center;
+        }
+
+        .back-home {
+            display: inline-block;
+            padding: 10px 26px;
+            border: 1px solid rgba(201,160,80,0.2);
+            border-radius: 30px;
+            color: #c9a050;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .back-home:active {
+            background: rgba(201,160,80,0.12);
+            border-color: #c9a050;
+        }
+
+        /* ===== Планшет+ ===== */
+        @media (min-width: 768px) {
+            .support-page { padding: 30px 0 40px; }
+            .support-page h1 { font-size: 32px; letter-spacing: 4px; margin-bottom: 15px; }
+            .support-page .subtitle { font-size: 15px; margin-bottom: 32px; }
+
+            .support-hero {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+                padding: 36px 30px;
+                margin-bottom: 34px;
+            }
+            .support-hero .left .rune-big { font-size: 68px; margin-bottom: 12px; }
+            .support-hero .left h2 { font-size: 26px; margin-bottom: 14px; }
+            .support-hero .left p { font-size: 15px; line-height: 1.85; }
+            .support-hero .right { padding: 28px 22px; }
+            .support-hero .right .heart { font-size: 48px; }
+            .support-hero .right .text { font-size: 14.5px; }
+
+            .donate-block { padding: 32px 28px; margin-bottom: 34px; }
+            .donate-block h2 { font-size: 24px; }
+            .donate-block > p { font-size: 15px; margin-bottom: 26px; }
+            .donate-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 18px;
+            }
+            .donate-buttons a {
+                width: auto;
+                max-width: none;
+                padding: 14px 36px;
+                font-size: 14.5px;
+            }
+            .donate-buttons a:hover {
+                background: rgba(201,160,80,0.2);
+                border-color: #c9a050;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(201,160,80,0.1);
+            }
+
+            .creator-block {
+                grid-template-columns: 1fr 1fr;
+                gap: 26px;
+                padding: 32px 28px;
+                margin-bottom: 34px;
+            }
+            .creator-block h2 {
+                font-size: 22px;
+                grid-column: 1 / -1;
+                margin-bottom: 6px;
+            }
+            .creator-block .text p { font-size: 14.5px; }
+            .creator-block .badges { gap: 10px; }
+            .creator-block .badge { padding: 12px 16px; font-size: 13.5px; }
+
+            .social-block { padding: 28px 24px; margin-bottom: 28px; }
+            .social-block h3 { font-size: 19px; margin-bottom: 12px; }
+            .social-block > p { font-size: 14.5px; margin-bottom: 20px; }
+            .social-links {
+                flex-direction: row;
+                justify-content: center;
+                gap: 14px;
+            }
+            .social-links a {
+                width: auto;
+                max-width: none;
+                padding: 12px 28px;
+            }
+            .social-links .tg:hover {
+                background: #006699;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(0,136,204,0.3);
+            }
+
+            .rune-signature { font-size: 28px; margin: 30px 0 18px; }
+            .back-home { padding: 11px 32px; font-size: 14px; }
+            .back-home:hover {
+                background: rgba(201,160,80,0.12);
+                border-color: #c9a050;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            ᛝᚲᚷᛉᚠᚨᚱ
+            <span>Старший Футарк · 24 руны</span>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="nav">
+            <div class="nav-title">Меню</div>
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
+
+            <div class="nav-row nav-row-left">
+                <a href="index.html">Главная</a>
+                <a href="runes.html">Руны Футарха</a>
+                <a href="rune-horoscope.html">Рунический гороскоп</a>
+                <a href="rune-divination.html">Гадание на рунах</a>
+                <a href="rune-magic.html">Магия</a>
+                <a href="gods.html">Асы Боги Скандинавии</a>
+                <a href="about.html">О сайте</a>
+            </div>
+            <div class="nav-row nav-row-right">
+                <a href="feedback.html">📧 Обратная связь</a>
+                <a href="support.html" class="support-link active">₽ Финансовая поддержка сайта</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== СТРАНИЦА ПОДДЕРЖКИ ===== -->
+    <section class="support-page">
+
+        <h1>✦ Поддержать создателя ✦</h1>
+        <p class="subtitle">
+            Если вам откликается этот проект, вы можете поддержать его развитие.<br>
+            Даже небольшой вклад помогает делать сайт лучше.
+        </p>
+
+        <!-- ===== HERO ===== -->
+        <div class="support-hero">
+            <div class="left">
+                <span class="rune-big">ᛉ</span>
+                <h2>Спасибо, что вы здесь ✦</h2>
+                <p>
+                    Этот сайт создан с душой, чашкой кофе и маленькой помощью искусственного интеллекта.
+                    Ваша поддержка — это знак того, что я двигаюсь в правильном направлении.
+                    Все средства пойдут на развитие проекта, новые материалы и улучшение сайта.
+                </p>
+            </div>
+            <div class="right">
+                <span class="heart">☕</span>
+                <div class="text">
+                    Каждый донат — это вклад в сохранение и распространение рунической мудрости.<br><br>
+                    <strong>Благодарю вас от всего сердца. ᛉ</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== СПОСОБЫ ПОДДЕРЖКИ ===== -->
+        <div class="donate-block">
+            <h2>✦ Способы поддержки ✦</h2>
+            <p>
+                Выберите удобный для вас способ. Все средства идут на развитие сайта,<br>
+                создание новых материалов и улучшение сервиса.
+            </p>
+            <div class="donate-buttons">
+                <a href="https://www.donationalerts.com/r/ElderFuthark" target="_blank" rel="noopener">
+                    <span class="icon">✦</span> DonationAlerts
+                </a>
+                <a href="https://www.tbank.ru/rm/r_UTQlDYdoht.DjsPiABpsp/Ip9Qr54681" target="_blank" rel="noopener">
+                    <span class="icon">✦</span> Счёт СБП
+                </a>
+            </div>
+            <p class="donate-footer-note">
+                Спасибо, что заглянули. Пусть руны ведут вас правильным путём. ᛉ
+            </p>
+        </div>
+
+        <!-- ===== О СОЗДАТЕЛЕ ===== -->
+        <div class="creator-block">
+            <h2>✦ О создателе ✦</h2>
+            <div class="text">
+                <p>
+                    Этот сайт был создан <span class="highlight">одним человеком</span> — вдохновением,
+                    чашкой кофе и несколькими бессонными ночами.
+                    В процессе работы я использовал <span class="highlight">искусственный интеллект</span>
+                    как помощника: для генерации идей, структурирования информации и написания кода.
+                    ИИ помог собрать воедино знания о рунах, мифологии и дизайне, но
+                    <span class="highlight">душа и смысл</span> — это ручная работа.
+                </p>
+                <p>
+                    <span class="highlight">✦</span> Если вам понравился контент, способ подачи или атмосфера сайта —
+                    я буду <span class="highlight">очень благодарен</span> за вашу поддержку.
+                    Все средства пойдут на развитие проекта, новые материалы и улучшение сайта.
+                </p>
+            </div>
+            <div class="badges">
+                <div class="badge">
+                    <span class="num">✦</span> Сделано с душой
+                </div>
+                <div class="badge">
+                    <span class="num">ᚨ</span> Помощь ИИ в коде
+                </div>
+                <div class="badge">
+                    <span class="num">ᛉ</span> Аутентичный подход
+                </div>
+                <div class="badge">
+                    <span class="num">✦</span> Постоянное развитие
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== СОЦСЕТИ ===== -->
+        <div class="social-block">
+            <h3>✦ Следите за обновлениями ✦</h3>
+            <p>
+                Чтобы быть в курсе новых материалов, практических советов и
+                новостей по улучшению сайта, подписывайтесь на мои каналы:
+            </p>
+            <div class="social-links">
+                <a href="https://t.me/FutharkRunes" target="_blank" rel="noopener" class="tg">
+                    ✈️ Telegram
+                </a>
+            </div>
+            <div class="note">
+                В Telegram я отвечаю на вопросы подписчиков.
+            </div>
+        </div>
+
+        <!-- ===== ПОДПИСЬ / НАЗАД ===== -->
+        <div class="rune-signature">
+            ᚲᛃᚨᛉᚷᚠᚱ
+        </div>
+
+        <div class="back-home-wrapper">
+            <a href="index.html" class="back-home">← Вернуться на главную</a>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>ᛝᚲᚷᛉᚠᚨᚱ · 24 руны Старшего Футарка</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Главная</a> ·
+            <a href="runes.html">Руны</a> ·
+            <a href="support.html">Поддержка</a> ·
+            <a href="about.html">О сайте</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 11px; opacity: 0.7;">
+            © 2026 · ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и мудростью
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    /* ===== БОКОВОЕ МЕНЮ ===== */
+    (function() {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navClose');
+
+        if (!burger || !nav || !overlay) return;
+
+        function openMenu() {
+            nav.classList.add('open');
+            overlay.classList.add('open');
+            burger.classList.add('active');
+            burger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
+        }
+        function closeMenu() {
+            nav.classList.remove('open');
+            overlay.classList.remove('open');
+            burger.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+
+        burger.addEventListener('click', function() {
+            if (nav.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+</script>
+</body>
+</html>

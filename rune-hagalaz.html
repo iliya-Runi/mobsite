@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c9a050">
+    <meta name="description" content="Руна Хагалаз — значение, символ, атт и мифология. Девятая руна Старшего Футарка.">
+    <title>Руна Хагалаз — Старший Футарк</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            ᛝᚲᚷᛉᚠᚨᚱ
+            <span>Старший Футарк · 24 руны</span>
+        </div>
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="nav">
+            <div class="nav-title">Меню</div>
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
+            <div class="nav-row nav-row-left">
+                <a href="index.html">Главная</a>
+                <a href="runes.html" class="active">Руны Футарха</a>
+                <a href="rune-horoscope.html">Рунический гороскоп</a>
+                <a href="rune-divination.html">Гадание на рунах</a>
+                <a href="rune-magic.html">Магия</a>
+                <a href="gods.html">Асы Боги Скандинавии</a>
+                <a href="about.html">О сайте</a>
+            </div>
+            <div class="nav-row nav-row-right">
+                <a href="feedback.html">📧 Обратная связь</a>
+                <a href="support.html" class="support-link">₽ Финансовая поддержка сайта</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="rune-page">
+        <div class="rune-header">
+            <span class="symbol">ᚺ</span>
+            <div class="name">Хагалаз</div>
+            <div class="name-en">Hagalaz</div>
+            <span class="att">Второй атт · Хеймдалль</span>
+        </div>
+        <div class="rune-details">
+            <div class="detail-block">
+                <h3>✦ Значение</h3>
+                <p>Хагалаз — руна разрушения и очищения. Она символизирует неизбежные перемены, которые приходят через кризис. Это руна, которая ломает старое, чтобы освободить место для нового.</p>
+            </div>
+            <div class="detail-block">
+                <h3>✦ Ключевые слова</h3>
+                <ul>
+                    <li>Град</li>
+                    <li>Разрушение</li>
+                    <li>Очищение</li>
+                    <li>Перемены</li>
+                </ul>
+            </div>
+            <div class="detail-block">
+                <h3>✦ В мифологии</h3>
+                <p>Хагалаз связана с Хеймдаллем — стражем моста Бифрост. Эта руна учит принимать неизбежное и видеть в разрушении возможность для обновления.</p>
+            </div>
+            <div class="detail-block">
+                <h3>✦ Стих из Эдды</h3>
+                <p style="font-style: italic; color: #c9a050;">«Буря сметает старое, но после неё приходит ясность.»</p>
+            </div>
+        </div>
+        <div class="rune-nav">
+            <a href="rune-wunjo.html" class="back-link">← Предыдущая</a>
+            <a href="runes.html" class="back-link">◈ Все руны</a>
+            <a href="rune-nauthiz.html">Следующая →</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>ᛝᚲᚷᛉᚠᚨᚱ · 24 руны Старшего Футарка</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Главная</a> ·
+            <a href="runes.html">Руны</a> ·
+            <a href="about.html">О сайте</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 11px; opacity: 0.7;">
+            © 2026 · ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и мудростью
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    (function() {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navClose');
+        if (!burger || !nav || !overlay) return;
+        function openMenu() {
+            nav.classList.add('open'); overlay.classList.add('open');
+            burger.classList.add('active'); burger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
+        }
+        function closeMenu() {
+            nav.classList.remove('open'); overlay.classList.remove('open');
+            burger.classList.remove('active'); burger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+        burger.addEventListener('click', function() {
+            if (nav.classList.contains('open')) closeMenu(); else openMenu();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+</script>
+</body>
+</html>

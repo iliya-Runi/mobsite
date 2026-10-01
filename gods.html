@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c9a050">
+    <meta name="description" content="Боги Скандинавии: Один, Тор, Локи, Фрейя, Тюр, Хеймдалль и другие. Пантеон асов и ванов.">
+    <title>Боги Скандинавии — Старший Футарк</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================
+           УНИКАЛЬНЫЕ СТИЛИ СТРАНИЦЫ БОГОВ
+           ============================================================ */
+
+        .hero-gods {
+            text-align: center;
+            padding: 36px 18px 42px;
+            background: linear-gradient(180deg, rgba(201,160,80,0.05) 0%, transparent 100%);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(201,160,80,0.1);
+        }
+
+        .hero-gods h1 {
+            font-size: 26px;
+            color: #c9a050;
+            text-shadow: 0 0 30px rgba(201,160,80,0.2);
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .hero-gods p {
+            font-size: 14px;
+            color: #b8ab9a;
+            max-width: 700px;
+            margin: 0 auto;
+            letter-spacing: 0.5px;
+            line-height: 1.75;
+            font-family: 'Georgia', serif;
+        }
+
+        .gods-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 22px 0 36px;
+        }
+
+        .god-card {
+            background: rgba(20,20,35,0.5);
+            border: 1px solid rgba(201,160,80,0.08);
+            border-radius: 16px;
+            padding: 22px 18px;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .god-card:active {
+            border-color: rgba(201,160,80,0.25);
+            background: rgba(30,30,50,0.5);
+        }
+
+        .god-card .symbol {
+            font-size: 38px;
+            color: #c9a050;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            line-height: 1;
+        }
+
+        .god-card .name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e8ddd0;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .god-card .name-en {
+            font-size: 12px;
+            color: #6a5f50;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .god-card .description {
+            font-size: 13.5px;
+            color: #b8ab9a;
+            line-height: 1.7;
+            font-family: 'Georgia', serif;
+        }
+
+        .god-card .description span {
+            color: #c9a050;
+            font-weight: 700;
+        }
+
+        .god-card .tag {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 16px;
+            border: 1px solid rgba(201,160,80,0.15);
+            border-radius: 30px;
+            font-size: 10px;
+            color: #c9a050;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .quote-block {
+            text-align: center;
+            padding: 28px 18px;
+            background: rgba(20,20,35,0.4);
+            border-radius: 16px;
+            border: 1px solid rgba(201,160,80,0.06);
+            margin: 20px 0 30px;
+        }
+
+        .quote-block .quote {
+            font-size: 17px;
+            color: #d4c9b8;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-block .author {
+            font-size: 12px;
+            color: #6a5f50;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+
+        /* ===== Планшет+ ===== */
+        @media (min-width: 768px) {
+            .hero-gods { padding: 50px 30px 60px; margin-bottom: 42px; }
+            .hero-gods h1 { font-size: 40px; letter-spacing: 6px; margin-bottom: 15px; }
+            .hero-gods p { font-size: 16px; }
+
+            .gods-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 22px;
+                margin: 30px 0 45px;
+            }
+            .god-card { padding: 26px 22px; }
+            .god-card .symbol { font-size: 46px; margin-bottom: 12px; }
+            .god-card .name { font-size: 22px; }
+            .god-card .description { font-size: 14px; }
+
+            .quote-block { padding: 34px; margin: 30px 0 40px; }
+            .quote-block .quote { font-size: 20px; }
+        }
+
+        @media (min-width: 1024px) {
+            .gods-grid { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+            .hero-gods h1 { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            ᛝᚲᚷᛉᚠᚨᚱ
+            <span>Старший Футарк · 24 руны</span>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="nav">
+            <div class="nav-title">Меню</div>
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
+
+            <div class="nav-row nav-row-left">
+                <a href="index.html">Главная</a>
+                <a href="runes.html">Руны Футарха</a>
+                <a href="rune-horoscope.html">Рунический гороскоп</a>
+                <a href="rune-divination.html">Гадание на рунах</a>
+                <a href="rune-magic.html">Магия</a>
+                <a href="gods.html" class="active">Асы Боги Скандинавии</a>
+                <a href="about.html">О сайте</a>
+            </div>
+            <div class="nav-row nav-row-right">
+                <a href="feedback.html">📧 Обратная связь</a>
+                <a href="support.html" class="support-link">₽ Финансовая поддержка сайта</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== ГЕРОЙ ===== -->
+    <section class="hero-gods">
+        <h1>✦ Боги Скандинавии ✦</h1>
+        <p>
+            Девять миров, три пантеона и воля судьбы, сплетённая из силы, мудрости и жертвенности.
+            Вот главные лица скандинавских саг — те, кто правят, сражаются и умирают, чтобы мир продолжился.
+        </p>
+    </section>
+
+    <!-- ===== КАРТОЧКИ БОГОВ ===== -->
+    <div class="gods-grid">
+
+        <div class="god-card">
+            <div class="symbol">ᚨ</div>
+            <div class="name">Один</div>
+            <div class="name-en">Óðinn</div>
+            <div class="description">
+                <span>Всеотец</span>, бог мудрости, войны и поэзии.
+                Пожертвовал глазом и девять дней висел на древе, чтобы постичь руны.
+            </div>
+            <div class="tag">✦ Верховный бог</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᛋ</div>
+            <div class="name">Бальдр</div>
+            <div class="name-en">Baldr</div>
+            <div class="description">
+                <span>Прекрасный и всеми любимый</span>,
+                Бальдр считается самым чистым и добрым из асов, идеалом духовной и физической красоты.
+            </div>
+            <div class="tag">Свет и солнце</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᚦ</div>
+            <div class="name">Тор</div>
+            <div class="name-en">Þórr</div>
+            <div class="description">
+                <span>Бог грома</span>, защитник людей и Асгарда.
+                С молотом Мьёльниром сокрушает великанов. Самый почитаемый бог у викингов.
+            </div>
+            <div class="tag">✦ Защитник людей</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᚲ</div>
+            <div class="name">Локи</div>
+            <div class="name-en">Loki</div>
+            <div class="description">
+                <span>Бог хаоса</span>, обманщик и перевёртыш.
+                Отец чудовищ и виновник гибели богов. Искусный манипулятор, который всегда сеет сомнения.
+            </div>
+            <div class="tag">✦ Хаос · Иллюзия</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᚠ</div>
+            <div class="name">Фрейя</div>
+            <div class="name-en">Freyja</div>
+            <div class="description">
+                <span>Богиня любви и войны из Ванов</span>, предводительница валькирий.
+                Красивейшая из богинь, владеет магией сейд и учит ей других.
+            </div>
+            <div class="tag">✦ Любовь · Магия</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᛏ</div>
+            <div class="name">Тюр</div>
+            <div class="name-en">Týr</div>
+            <div class="description">
+                <span>Бог воинской чести</span> и правосудия.
+                Пожертвовал рукой, чтобы сковать волка Фенрира. Без его силы нет победы, а без правды нет мира.
+            </div>
+            <div class="tag">✦ Честь · Справедливость</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᛉ</div>
+            <div class="name">Хеймдалль</div>
+            <div class="name-en">Heimdallr</div>
+            <div class="description">
+                <span>Страж Асгарда</span>, хранитель моста Бифрост.
+                Слышит, как растёт трава, и видит за сотню миль. Его рог Гьяллархорн возвестит о начале Рагнарёка.
+            </div>
+            <div class="tag">✦ Страж · Бдительность</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᚷ</div>
+            <div class="name">Гери</div>
+            <div class="name-en">Geri</div>
+            <div class="description">
+                <span>Волк Одина</span>, вечный спутник.
+                Вместе с Фреки постоянно сопровождает верховного бога и сидит у его ног в Вальхалле.
+                Символ мудрости и власти.
+            </div>
+            <div class="tag">✦ Жадный</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᚷ</div>
+            <div class="name">Фреки</div>
+            <div class="name-en">Freki</div>
+            <div class="description">
+                <span>Волк Одина</span>, вечный спутник.
+                Вместе с Гери сопровождает верховного бога. Символ воинского духа и защиты.
+            </div>
+            <div class="tag">✦ Прожорливый</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᚺ</div>
+            <div class="name">Ёрмунганд</div>
+            <div class="name-en">Jörmungandr</div>
+            <div class="description">
+                <span>Мировой Змей</span>, символизирует границу миров, хаос и бесконечность времени.
+                Олицетворяет цикличность бытия и единство начала и Рагнарёка.
+            </div>
+            <div class="tag">✦ Разрушение · Цикл</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᛈ</div>
+            <div class="name">Норны</div>
+            <div class="name-en">Nornir</div>
+            <div class="description">
+                <span>Три сестры судьбы</span>, олицетворяют саму волю рока.
+                Это не та сила, с которой можно договориться, — это факт, уготованный всем.
+                Даже верховный бог Один не в силах оспорить сказанное ими.
+            </div>
+            <div class="tag">✦ Неизбежность · Судьба</div>
+        </div>
+
+        <div class="god-card">
+            <div class="symbol">ᛇ</div>
+            <div class="name">Валькирии</div>
+            <div class="name-en">Valkyrjur</div>
+            <div class="description">
+                <span>Девы битвы</span>, дочери Одина или славных воинов-конунгов.
+                Летают на крылатых конях над полями сражений, решают исход битвы и выбирают, кому суждено погибнуть.
+            </div>
+            <div class="tag">✦ Проводники душ</div>
+        </div>
+
+    </div>
+
+    <!-- ===== ЦИТАТА ===== -->
+    <div class="quote-block">
+        <div class="quote">
+            «Умирают люди, умирают боги — но руны и память о них живут в тех, кто помнит.»
+        </div>
+        <div class="author">— из Старшей Эдды</div>
+    </div>
+
+    <footer>
+        <p>ᛝᚲᚷᛉᚠᚨᚱ · 24 руны Старшего Футарка</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Главная</a> ·
+            <a href="runes.html">Руны</a> ·
+            <a href="gods.html">Боги</a> ·
+            <a href="about.html">О сайте</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 11px; opacity: 0.7;">
+            © 2026 · ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и мудростью
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    /* ===== БОКОВОЕ МЕНЮ ===== */
+    (function() {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navClose');
+
+        if (!burger || !nav || !overlay) return;
+
+        function openMenu() {
+            nav.classList.add('open');
+            overlay.classList.add('open');
+            burger.classList.add('active');
+            burger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
+        }
+        function closeMenu() {
+            nav.classList.remove('open');
+            overlay.classList.remove('open');
+            burger.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+
+        burger.addEventListener('click', function() {
+            if (nav.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+</script>
+</body>
+</html>

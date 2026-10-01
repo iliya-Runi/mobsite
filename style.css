@@ -909,7 +909,6 @@ footer a:hover { color: #c9a050; }
 
     .rune-details { gap: 30px; }
 }
-
 /* ============================================================
    УТИЛИТЫ
    ============================================================ */
@@ -919,4 +918,40 @@ footer a:hover { color: #c9a050; }
 @media (hover: none) {
     .rune-card:hover { transform: none; border-color: rgba(201,160,80,0.12); box-shadow: none; }
     .rune-card:active { transform: scale(0.97); border-color: #c9a050; }
+}
+/* ============================================================
+   СТРАНИЦА РУН (runes.html)
+   ============================================================ */
+
+.runes-page {
+    padding: 10px 0 20px;
+}
+
+.runes-intro {
+    text-align: center;
+    padding: 20px 12px 26px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.runes-intro h1 {
+    font-size: 24px;
+    color: #c9a050;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.runes-intro p {
+    color: #b8ab9a;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+    .runes-page { padding: 20px 0; }
+    .runes-intro { padding: 30px 20px 40px; }
+    .runes-intro h1 { font-size: 36px; letter-spacing: 4px; margin-bottom: 15px; }
+    .runes-intro p { font-size: 16px; line-height: 1.8; }
 }

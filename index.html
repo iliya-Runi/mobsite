@@ -53,6 +53,18 @@
         </nav>
     </header>
 
+    <!-- ===== ГЕРОЙ С РУНИЧЕСКИМ КРУГОМ ===== -->
+    <section class="hero">
+        <h1>Голос древних камней</h1>
+        <p class="subtitle">
+            Наведи на руну в круге, чтобы узнать её имя.<br>
+            Вращение круга символизирует вечный цикл перетекания энергии.
+        </p>
+        <div class="rune-circle-container">
+            <div class="rune-circle" id="runeCircle"></div>
+        </div>
+    </section>
+
     <!-- ===== ЦИТАТА ДНЯ ===== -->
     <section>
         <div style="background: rgba(20,20,35,0.4); border: 1px solid rgba(201,160,80,0.08); border-radius: 20px; padding: 35px 20px 28px; text-align: center; position: relative; overflow: hidden; margin-bottom: 30px;">
@@ -72,6 +84,36 @@
             <button onclick="updateQuote()" style="margin-top: 15px; background: rgba(201,160,80,0.05); border: 1px solid rgba(201,160,80,0.1); border-radius: 30px; padding: 9px 26px; color: #6a5f50; font-size: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s;">
                 ⟳ Обновить
             </button>
+        </div>
+    </section>
+
+    <!-- ===== РАЗДЕЛ О МИФОЛОГИИ ===== -->
+    <section class="myth-section" id="myth">
+        <h2>✦ Из скандинавских саг ✦</h2>
+
+        <div class="myth-text">
+            <strong>Иггдрасиль — Мировое Древо</strong><br>
+            Великий ясень, пронизывающий все девять миров. Его корни уходят в Хель, ствол держит Мидгард, а крона касается Асгарда. У его корней обитают норны — прядильщицы судьбы, а на вершине сидит орёл-мудрец.
+        </div>
+
+        <div class="myth-text">
+            <strong>Один — Всеотец</strong><br>
+            Верховный бог, владыка Вальгаллы, странник и шаман. Он пожертвовал глазом, чтобы испить из колодца мудрости, и девять дней висел на Иггдрасиле, чтобы постичь тайны рун. Именно он открыл руны людям.
+        </div>
+
+        <div class="myth-text">
+            <strong>Три атта — три мира</strong><br>
+            Руны делятся на три группы по восемь. Первый атт связан с плодородием и созиданием, второй — с испытаниями и защитой, третий — с воинской честью и наследием. Вместе они охватывают все аспекты бытия.
+        </div>
+
+        <div class="myth-text">
+            <strong>Тюр — бог воинской чести</strong><br>
+            Бог войны и правосудия. Он пожертвовал своей рукой, чтобы сковать волка Фенрира, ибо знал: истинная честь требует платы, а справедливость — смелости. Его руна Тейваз указывает путь тем, кто готов идти до конца, не сдаваясь и не предавая своего слова.
+        </div>
+
+        <div class="myth-text" style="grid-column: 1 / -1; text-align: center; color: #d8ac6f; font-style: italic; border-top: 1px solid rgba(201, 160, 80, 0.1); padding-top: 25px;">
+            «Познай себя, и ты познаешь мир. Познай руны — и ты познаешь себя.»<br>
+            — из Старшей Эдды
         </div>
     </section>
 
@@ -127,6 +169,62 @@
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+
+    /* ===== РУНИЧЕСКИЙ КРУГ ===== */
+    (function() {
+        const circle = document.getElementById('runeCircle');
+        if (!circle) return;
+
+        const runes = [
+            { symbol: 'ᚠ', name: 'Феху' },
+            { symbol: 'ᚢ', name: 'Уруз' },
+            { symbol: 'ᚦ', name: 'Турисаз' },
+            { symbol: 'ᚨ', name: 'Ансуз' },
+            { symbol: 'ᚱ', name: 'Райдо' },
+            { symbol: 'ᚲ', name: 'Кеназ' },
+            { symbol: 'ᚷ', name: 'Гебо' },
+            { symbol: 'ᚹ', name: 'Вуньо' },
+            { symbol: 'ᚺ', name: 'Хагалаз' },
+            { symbol: 'ᚾ', name: 'Наутиз' },
+            { symbol: 'ᛁ', name: 'Иса' },
+            { symbol: 'ᛃ', name: 'Йера' },
+            { symbol: 'ᛇ', name: 'Эйваз' },
+            { symbol: 'ᛈ', name: 'Перто' },
+            { symbol: 'ᛉ', name: 'Альгиз' },
+            { symbol: 'ᛋ', name: 'Соулу' },
+            { symbol: 'ᛏ', name: 'Тейваз' },
+            { symbol: 'ᛒ', name: 'Беркана' },
+            { symbol: 'ᛖ', name: 'Эхваз' },
+            { symbol: 'ᛗ', name: 'Манназ' },
+            { symbol: 'ᛚ', name: 'Лагуз' },
+            { symbol: 'ᛝ', name: 'Ингуз' },
+            { symbol: 'ᛟ', name: 'Отал' },
+            { symbol: 'ᛞ', name: 'Дагаз' }
+        ];
+
+        const total = runes.length;
+        const radius = 42; // % от радиуса круга
+
+        runes.forEach((rune, index) => {
+            const angle = (index / total) * 360;
+            const rad = (angle - 90) * Math.PI / 180;
+            const x = 50 + radius * Math.cos(rad);
+            const y = 50 + radius * Math.sin(rad);
+
+            const item = document.createElement('div');
+            item.className = 'rune-item';
+            item.style.left = `calc(${x}% - 18px)`;
+            item.style.top  = `calc(${y}% - 18px)`;
+            item.textContent = rune.symbol;
+
+            const tip = document.createElement('span');
+            tip.className = 'rune-tip';
+            tip.textContent = rune.name;
+            item.appendChild(tip);
+
+            circle.appendChild(item);
         });
     })();
 

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c9a050">
+    <meta name="description" content="Обратная связь: напишите нам в Telegram или на почту. Вопросы, идеи и предложения по проекту «Старший Футарк».">
+    <title>Обратная связь | Старший Футарк</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================
+           УНИКАЛЬНЫЕ СТИЛИ СТРАНИЦЫ ОБРАТНОЙ СВЯЗИ
+           ============================================================ */
+
+        .feedback-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 0 20px;
+        }
+
+        .feedback-page h1 {
+            font-size: 24px;
+            color: #c9a050;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .feedback-page .subtitle {
+            text-align: center;
+            color: #b8ab9a;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin-bottom: 26px;
+            line-height: 1.7;
+        }
+
+        .telegram-card {
+            background: rgba(20,20,35,0.5);
+            border: 1px solid rgba(201,160,80,0.08);
+            border-radius: 18px;
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        .telegram-card .icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .telegram-card h2 {
+            color: #e8ddd0;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .telegram-card > p {
+            color: #b8ab9a;
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 22px;
+        }
+
+        /* ===== Кнопка Telegram ===== */
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: #0088cc;
+            color: #ffffff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            font-size: 15px;
+            font-family: 'Cinzel', serif;
+            border: none;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .telegram-btn:active {
+            background: #006699;
+            transform: scale(0.98);
+        }
+
+        .telegram-btn .tg-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* ===== Кнопка Email ===== */
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 30px;
+            margin-top: 14px;
+            background: rgba(201,160,80,0.1);
+            border: 1px solid rgba(201,160,80,0.25);
+            border-radius: 30px;
+            color: #e8c85a;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Cinzel', serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .email-btn:active {
+            background: rgba(201,160,80,0.2);
+            border-color: #c9a050;
+            transform: scale(0.98);
+        }
+
+        .email-btn .mail-icon {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .contact-note {
+            margin-top: 12px;
+            font-size: 13.5px;
+            color: #ccab7c;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+        }
+
+        .contact-note strong {
+            color: #c9a050;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .feedback-page .rune-signature {
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 8px;
+            color: #c9a050;
+            opacity: 0.3;
+            margin-top: 32px;
+        }
+
+        /* ===== Планшет+ ===== */
+        @media (min-width: 768px) {
+            .feedback-page { padding: 30px 0 40px; }
+            .feedback-page h1 { font-size: 32px; letter-spacing: 4px; margin-bottom: 15px; }
+            .feedback-page .subtitle { font-size: 16px; margin-bottom: 32px; }
+
+            .telegram-card { padding: 46px 32px; }
+            .telegram-card .icon { font-size: 60px; margin-bottom: 15px; }
+            .telegram-card h2 { font-size: 24px; }
+            .telegram-card > p { font-size: 15.5px; margin-bottom: 26px; }
+
+            .telegram-btn {
+                padding: 16px 42px;
+                font-size: 17px;
+            }
+            .telegram-btn:hover {
+                background: #006699;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(0,136,204,0.3);
+            }
+
+            .email-btn {
+                padding: 14px 36px;
+                font-size: 15px;
+            }
+            .email-btn:hover {
+                background: rgba(201,160,80,0.2);
+                border-color: #c9a050;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(201,160,80,0.15);
+            }
+
+            .contact-note { font-size: 15px; }
+            .feedback-page .rune-signature { font-size: 28px; margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            ᛝᚲᚷᛉᚠᚨᚱ
+            <span>Старший Футарк · 24 руны</span>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="nav">
+            <div class="nav-title">Меню</div>
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
+
+            <div class="nav-row nav-row-left">
+                <a href="index.html">Главная</a>
+                <a href="runes.html">Руны Футарха</a>
+                <a href="rune-horoscope.html">Рунический гороскоп</a>
+                <a href="rune-divination.html">Гадание на рунах</a>
+                <a href="rune-magic.html">Магия</a>
+                <a href="gods.html">Асы Боги Скандинавии</a>
+                <a href="about.html">О сайте</a>
+            </div>
+            <div class="nav-row nav-row-right">
+                <a href="feedback.html" class="active">📧 Обратная связь</a>
+                <a href="support.html" class="support-link">₽ Финансовая поддержка сайта</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== СТРАНИЦА ОБРАТНОЙ СВЯЗИ ===== -->
+    <section class="feedback-page">
+
+        <h1>✦ Обратная связь ✦</h1>
+        <p class="subtitle">
+            Ваши вопросы, предложения и идеи помогут сделать сайт лучше.<br>
+            Напишите нам в Telegram — мы всегда на связи ✦
+        </p>
+
+        <div class="telegram-card">
+            <span class="icon">✉️</span>
+            <h2>Напишите нам в Telegram</h2>
+            <p>
+                Задайте вопрос, оставьте предложение или просто поделитесь впечатлениями.<br>
+                Мы читаем каждое сообщение и отвечаем на них.
+            </p>
+
+            <a href="https://t.me/FutharkRunes" target="_blank" rel="noopener" class="telegram-btn">
+                <span class="tg-icon">✈️</span> Перейти в Telegram
+            </a>
+            <div class="contact-note">
+                Наш канал: <strong>@FutharkRunes</strong>
+            </div>
+
+            <a href="https://e.mail.ru/compose?to=futhark_podergca@mail.ru" target="_blank" rel="noopener" class="email-btn">
+                <span class="mail-icon">✉️</span> Написать на почту (Mail.ru)
+            </a>
+            <div class="contact-note">
+                Наша почта: <strong>futhark_podergca@mail.ru</strong>
+            </div>
+        </div>
+
+        <div class="rune-signature">
+            ᚲᛃᚨᛉᚷᚠᚱ
+        </div>
+
+    </section>
+
+    <footer>
+        <p>ᛝᚲᚷᛉᚠᚨᚱ · 24 руны Старшего Футарка</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Главная</a> ·
+            <a href="feedback.html">Обратная связь</a> ·
+            <a href="about.html">О сайте</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 11px; opacity: 0.7;">
+            © 2026 · ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и мудростью
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    /* ===== БОКОВОЕ МЕНЮ ===== */
+    (function() {
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navClose');
+
+        if (!burger || !nav || !overlay) return;
+
+        function openMenu() {
+            nav.classList.add('open');
+            overlay.classList.add('open');
+            burger.classList.add('active');
+            burger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
+        }
+        function closeMenu() {
+            nav.classList.remove('open');
+            overlay.classList.remove('open');
+            burger.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+
+        burger.addEventListener('click', function() {
+            if (nav.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        });
+    })();
+</script>
+</body>
+</html>
